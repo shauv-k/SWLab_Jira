@@ -2,11 +2,15 @@ def censor_text(text):
     # List of curse words
     curse_words = ["darn", "dang", "freakin", "heck", "shoot"]
 
-    # Replace each curse word with stars of the same length
-    for word in curse_words:
-        text = text.replace(word, "*" * len(word))
+    result_words = []
+    for word in text.split():
+        # Compare lowercase version
+        if word.lower() in curse_words:
+            result_words.append("*" * len(word))
+        else:
+            result_words.append(word)
 
-    return text
+    return " ".join(result_words)
 
 
 # Main program
